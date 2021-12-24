@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizz Buzz</title>
+</head>
+
+<body>
+    <script>
+        
+        // No failsafe check for actual number.
+        let input = parseInt(prompt("Please enter the number you would like Fizz Buzz to count to: "));
+
+        // if Counter divisible by 3 & 5 needs to be first otherwise the individual 3 and 5 else ifs would proc before it could.
+        for (let i = 1; i <= input; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                console.log("Fizz Buzz")
+            } else if (i % 3 === 0) {
+                console.log("Fizz")
+            } else if (i % 5 === 0) {
+                console.log("Buzz")
+            } else {
+                console.log(i)
+            }
+        }
+
+    </script>
+</body>
+
+</html>
