@@ -115,7 +115,7 @@ function game() {
             ++compScore;
         };
 
-        //Score Printer
+        //Score printer
         alert(`Score:\n Computer: ${compScore}\n You: ${playScore}`)
         };
 };
