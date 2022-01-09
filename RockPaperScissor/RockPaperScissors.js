@@ -1,4 +1,3 @@
-
 // Function for computers choice.
 // Math Round was used rather than Floor to increase chance of scissors.
 function computerPlay() {
@@ -10,31 +9,121 @@ function computerPlay() {
 // Funtion to play  single game of Rock Paper Scissors.
 // If is my most practiced method so I used that.
 // Last else if checks if player even selected from the three options.
-/*
+// First iteration with // inside that simply alerted players
+// Functionality added for checking Score and Incrementing Score
 function RockPaperScissors(computerSelection,playerSelection) {
+    scoreCheck();
     if (computerSelection === playerSelection) {
-            return alert("You have tied!");
+           // return alert("You have tied!");
+        return (
+            playWin = 2,
+            play = false,
+            console.log(play),
+            console.log(playWin)
+        );
         } else if (computerSelection === "rock" && playerSelection === "paper") {
-            return alert("You beat Rock with Paper, you win!");
+           // return alert("You beat Rock with Paper, you win!");
+           return (
+               playWin = true,
+               play = true,
+               console.log(play),
+               console.log(playWin),
+               scoreIncrement()
+           );
+
         } else if (computerSelection === "rock" && playerSelection === "scissors") {
-            return alert("Rock beats Scissors, you lose!");
+           // return alert("Rock beats Scissors, you lose!");
+           return (
+            playWin = false,
+            play = true,
+            console.log(play),
+            console.log(playWin),
+            scoreIncrement()
+        );
+
         } else if (computerSelection === "paper" && playerSelection === "rock") {
-            return alert("Paper beats Rock, you lose!");
+           // return alert("Paper beats Rock, you lose!");
+           return (
+            playWin = false,
+            play = true,
+            console.log(play),
+            console.log(playWin),
+            scoreIncrement()
+        );
+
         } else if (computerSelection === "paper" && playerSelection === "scissors") {
-            return alert("You beat Paper with Scissors, you win!");
+           // return alert("You beat Paper with Scissors, you win!");
+           return (
+            playWin = true,
+            play = true,
+            console.log(play),
+            console.log(playWin),
+            scoreIncrement()
+        );
+
         } else if (computerSelection === "scissors" && playerSelection === "rock") {
-            return alert("You beat Scissors with Rock, you win!");
+           // return alert("You beat Scissors with Rock, you win!");
+           return (
+            playWin = true,
+            play = true,
+            console.log(play),
+            console.log(playWin),
+            scoreIncrement()
+        );
+
         } else if (computerSelection === "scissors" && playerSelection === "paper") {
-            return alert("Scissors beats paper, you lose!");
+           // return alert("Scissors beats paper, you lose!");
+           return (
+            playWin = false,
+            play = true,
+            console.log(play),
+            console.log(playWin),
+            scoreIncrement()
+        );
+
         } else if (playerSelection !== "rock" || playerSelection !== "paper" || playerSelection !== "scissors") {
-            return alert("Please use a valid input.");
+           // return alert("Please use a valid input.");
+           return (
+            playWin = 2,
+            play = false,
+            console.log(play),
+            console.log(playWin)
+        );
+
         };
 
 };
-*/
+
+
+// Increments Score based on RockPaperScissors function outcome
+function scoreIncrement() {
+    if (playWin === true && play === true){
+        return (
+            playScore += 1,
+            document.getElementById("playScore").innerText = `${playScore}`,
+            play = false
+        );
+    } else if (playWin === false && play === true) {
+        return (
+            compScore += 1,
+            document.getElementById("compScore").innerText = `${compScore}`,
+            play = false
+        );
+    };
+}
+
+// Checks total scorecount
+function scoreCheck() {
+    if (compScore === 5) {
+        alert("Computer is first to five points, Computer Wins!");
+    } else if (playScore === 5) {
+        alert("Player is the first to five points, You Win!");
+    };
+};
 
 
 // Function to play five rounds of Rock Paper and Scissors.
+/*
 function game() {
 
     let rounds = 5
@@ -121,3 +210,36 @@ function game() {
 };
 
 game();
+*/
+
+// playWin records who wins and play is false as default, for ties, and invalid
+  // input
+let compSelection = computerPlay();
+let playSelection = "";
+let compScore = 0;
+let playScore = 0;
+let playWin = ""
+let play = false;
+
+// Event listeners for buttons
+document.getElementById("Rock").addEventListener("click", function () {
+    return (
+        playSelection = "rock",
+        RockPaperScissors(compSelection,playSelection),
+        compSelection = computerPlay()
+        );
+});
+document.getElementById("Paper").addEventListener("click", function () {
+    return (
+        playSelection = "paper",
+        RockPaperScissors(compSelection,playSelection),
+        compSelection = computerPlay()
+        );
+});
+document.getElementById("Scissors").addEventListener("click", function () {
+    return (
+        playSelection = "scissors",
+        RockPaperScissors(compSelection,playSelection),
+        compSelection = computerPlay()
+        );
+});
