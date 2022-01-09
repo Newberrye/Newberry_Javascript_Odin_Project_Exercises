@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Manipulation Exercise</title>
+
+    <scipt src="exercise_1_javascript.js" defer></scipt>
+</head>
+
+<body>
+    <h1>
+      MY WEBPAGE TITLE
+    </h1>
+    <div id="container"></div>
+</body>
+
+</html>
