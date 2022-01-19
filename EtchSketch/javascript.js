@@ -36,10 +36,13 @@ function columnMaker(columnAmount) {
 // Creates a 16 by 16 grid
 createGrid(16,16);
 
-cells.addEventListener("mouseover", function(event) {
-    event.target.style.backgroundcolor = "black";
+function changeEtch() {
+    let cells = document.getElementsByClassName("cell");
+    cells.setAttribute("style","background-color:black");
 
-    setTimeout(function() {
-        event.target.style.backgroundcolor = "";
-      }, 500);
-}, false);
+};
+
+let pokemon=document.querySelectorAll('.cell');
+    pokemon.forEach((pokemon)=>{
+    pokemon.addEventListener('mouseover',changeEtch);
+});
