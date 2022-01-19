@@ -1,0 +1,14 @@
+.cellRows {
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 20px;
+};
+
+.cell {
+    display: flex;
+    border: 1px solid black;
+    height: 10px;
+    width: auto;
+    content: " ";
+};
