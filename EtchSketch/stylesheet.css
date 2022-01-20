@@ -3,6 +3,11 @@
     display: inline-block;
     width: 10px;
     height: 10px;
-    border: 1px solid;
     overflow: auto;
+    border: 1px solid;
+};
+
+#base {
+    width: 100px;
+    height: 100px;
 };

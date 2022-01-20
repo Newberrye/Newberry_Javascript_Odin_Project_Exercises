@@ -1,9 +1,3 @@
-// Variables for rows and cells.
-// Base container is needed for attaching rows onto
-const basecontainer = document.getElementById("base");
-let rows = document.getElementsByClassName("cellRows");
-let cells = document.getElementsByClassName("cell");
-
 // Creates the grid based on amount entered
 function createGrid(rows,columns) {
     rowMaker(rows);
@@ -33,16 +27,71 @@ function columnMaker(columnAmount) {
     };
 };
 
-// Creates a 16 by 16 grid
-createGrid(16,16);
-
-function changeEtch() {
-    let cells = document.getElementsByClassName("cell");
-    cells.setAttribute("style","background-color:black");
-
+//Changes background color of grid
+function changeEtch(event) {
+    event.target.setAttribute("style","background-color:black");
 };
 
-let pokemon=document.querySelectorAll('.cell');
-    pokemon.forEach((pokemon)=>{
-    pokemon.addEventListener('mouseover',changeEtch);
-});
+//Resets etch and moves onto getPrompt.
+function clearGrid() {
+    let allCells=document.querySelectorAll('.cell');
+    allCells.forEach((allCells)=>{
+        allCells.setAttribute("style","background-color:white");
+    });
+    return getPrompt();
+};
+
+// Gets prompt from user and makes said grid.
+function getPrompt() {
+    let promptInput = prompt("Enter a full number: ");
+    let maxSize = 100;
+    let minSize = 1;
+
+    promptInput = Math.floor(Number(promptInput));
+    if (typeof(promptInput) === "number") {
+        if (promptInput <= maxSize && promptInput >= minSize) {
+            return (
+                deleteGrid(),
+                createGrid(promptInput,promptInput),
+                getCells()
+            );
+        } else {
+            return alert("Please use a number between 1 and 100");
+        };
+    } else {
+        return alert("Please enter a number");
+    };
+};
+
+// Deletes the grid
+function deleteGrid() {
+    let allRows=document.querySelectorAll('.cellRows');
+    allRows.forEach((allRows)=>{
+        allRows.remove();
+    });
+};
+
+// Reselects new grid cells and adds event listener for them
+function getCells() {
+    let allCells=document.querySelectorAll('.cell');
+    allCells.forEach((allCells)=>{
+            allCells.addEventListener('mouseover',changeEtch);
+    });
+};
+
+
+// Variables for rows and cells.
+// Base container is needed for appending rows.
+const basecontainer = document.getElementById("base");
+let rows = document.getElementsByClassName("cellRows");
+let cells = document.getElementsByClassName("cell");
+
+// Creates first load grid
+createGrid(16,16);
+
+// Creates first load grid
+getCells();
+
+// Creates button and adds will clear and make a new grid
+let clearButton = document.querySelector("button");
+clearButton.addEventListener("click", clearGrid);
