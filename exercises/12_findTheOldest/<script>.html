@@ -1,0 +1,84 @@
+<script>
+
+const findTheOldest = function(array) {
+    
+    const oldest = array.sort((a,b) => {
+        const fullDate = new Date();
+        let year = fullDate.getFullYear();
+
+        console.log(!a.yearOfDeath);
+
+        if (!a.yearOfDeath === true && !b.yearOfDeath === true) {
+            const lastPerson = year - a.yearOfBirth;
+            const nextPerson = year - b.yearOfBirth;
+
+            console.log(1);
+            console.log(lastPerson);
+            console.log(nextPerson);
+
+            if (lastPerson > nextPerson) {
+                return -1;
+            } else {
+                return 1;
+            }
+        } else if (!a.yearOfDeath === true) {
+            const lastPerson = a.yearOfDeath - a.yearOfBirth;
+            const nextPerson = year - b.yearOfBirth;
+
+            console.log(2);
+            console.log(lastPerson);
+            console.log(nextPerson);
+
+            if (lastPerson > nextPerson) {
+                return -1;
+            } else {
+                return 1;
+            }
+        } else if (!b.yearOfDeath === true) {
+            const lastPerson = year - a.yearOfBirth;
+            const nextPerson = b.yearOfDeath - b.yearOfBirth;
+
+            console.log(3);
+            console.log(lastPerson);
+            console.log(nextPerson);
+
+            if (lastPerson > nextPerson) {
+                return -1;
+            } else {
+                return 1;
+            }
+        } else {
+            const lastPerson = a.yearOfDeath - a.yearOfBirth;
+            const nextPerson = b.yearOfDeath - b.yearOfBirth;
+
+            if (lastPerson > nextPerson) {
+                return -1;
+            } else {
+                return 1;
+            }
+        };
+    });
+    return oldest[0].name;
+};
+
+const people = [
+      {
+        name: "Carly",
+        yearOfBirth: 1942,
+        yearOfDeath: 1970,
+      },
+      {
+        name: "Ray",
+        yearOfBirth: 1962,
+        yearOfDeath: 2011,
+      },
+      {
+        name: "Jane",
+        yearOfBirth: 1912,
+        yearOfDeath: 1941,
+      },
+    ]
+
+console.log(findTheOldest(people));
+
+</script>

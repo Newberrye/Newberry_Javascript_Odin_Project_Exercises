@@ -1,0 +1,28 @@
+<script>
+
+    const getTheTitles = function(books) {
+    const newArray = books.map(bookNames => {
+        const container = [];
+
+        for (let key in books) {
+            container[key] = books[key].title;
+        };
+        return container;
+        
+    });
+
+    return newArray;
+};
+
+const books = [
+      {
+        title: 'Book',
+        author: 'Name'
+      },
+      {
+        title: 'Book2',
+        author: 'Name2'
+      }
+    ]
+console.log(getTheTitles(books));
+</script>
