@@ -1,0 +1,5 @@
+.basecontainer {
+    display: flexbox;
+    flex-direction: column;
+    flex: auto;
+};
