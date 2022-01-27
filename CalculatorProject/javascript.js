@@ -14,6 +14,7 @@ const divide = function(number1,number2) {
     return number1 / number2;
 };
 
+// Function to operate on numbers
 const operate = function(number1,operator,number2) {
 
     if (operator === "+") {
@@ -27,7 +28,9 @@ const operate = function(number1,operator,number2) {
     }
 };
 
-
+// NumberCounter is to check what number needs to be stored.
+// Total holds all operation values for display.
+// Divide by zero holds previous operator.
 let buttons = document.getElementsByTagName("button");
 let number1 = '';
 let number2 = '';
@@ -37,10 +40,13 @@ let operationValue = 0;
 let total = 0;
 let divideByZero = ``;
 
+// Adds an event listener for all buttons.
 for (i=0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function () {
         let displayValue = document.querySelector("input");
 
+// Pre-check for dividing by 0 and a display clear if user hits buttons after
+    // hitting equal.
         if (displayValue.value == "ERROR DIVIDED BY 0") {
             displayValue.value = ``;
             number1 = '';
@@ -55,6 +61,8 @@ for (i=0; i < buttons.length; i++) {
             total = 0;
         };
 
+// Button identifier for ifs
+// First if deals with creating numbers
         if (this.id <= 9) {
             displayValue.value += this.id;
 
@@ -64,13 +72,18 @@ for (i=0; i < buttons.length; i++) {
                 number2 += this.id;
             };
 
+// Second if deals with recording operators and multi-operation
         } else if (this.id == "+" || this.id == "-" || this.id == "*" || this.id == "/") {
             numberCounter += 1;
 
+    // Checks for dividing by 0
             if (number2 === `0` && divideByZero == `/`) {
                 displayValue.value = "ERROR DIVIDED BY 0";
                 numberCounter = 0;
                 divideByZero = ``;
+
+    // Calculation; Epsilon and rounding used to fix Javascript number problems
+        // and to limit floating points.
             } else if (numberCounter == 2) {
                 number1 = Number(number1);
                 number2 = Number(number2);
@@ -85,12 +98,15 @@ for (i=0; i < buttons.length; i++) {
                 numberCounter = 1;
             };
 
+    // Prevents operator from being displayed after error message and stores
+        // a check for dividing by 0 for equals button click.
             if (displayValue.value !== "ERROR DIVIDED BY 0") {
                 displayValue.value += ` ${this.id} `;
                 divideByZero = this.id;
                 operator = this.id;
             }
-
+    
+    // Clears all variables and display.
         } else if (this.id == "clear") {
             displayValue.value = ``;
             number1 = '';
@@ -100,10 +116,13 @@ for (i=0; i < buttons.length; i++) {
             operationValue = 0;
             total = 0;
             divideByZero = ``;
-
+        
+// Third if deals with calculating after clicking equal button.
         } else if (this.id == "=") {
             numberCounter = 2;
             
+    // Checks for empty operation variables and will clear everything if the 
+            // user attempts.
             if (number1 === '' || operator === '' || number2 === '') {
                 displayValue.value = ``;
                 number1 = '';
@@ -113,12 +132,15 @@ for (i=0; i < buttons.length; i++) {
                 operationValue = 0;
                 total = 0;
                 divideByZero = ``;
-
+    
+    // Divide by 0 check
             } else if (number2 === `0` && divideByZero == `/`) {
                 displayValue.value = "ERROR DIVIDED BY 0";
                 numberCounter = 0;
                 divideByZero = ``;
 
+    // Final operation calculator and resets most variables.
+    // Total and Display are reset in first if of event listener function.
             } else if (numberCounter == 2) {
                 number1 = Number(number1);
                 number2 = Number(number2);
