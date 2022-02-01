@@ -1,5 +1,20 @@
 .basecontainer {
-    display: flexbox;
+    display: flex;
     flex-direction: column;
-    flex: auto;
-};
+    flex: 2 1 0;
+    padding: 1px;
+    margin: 1px;
+}
+
+.row {
+    display: flex;
+    width: 185px;
+    padding: 1px;
+    margin: 1px;
+}
+
+#clear {
+    width: fit-content;
+    padding: 1px;
+    margin: 1px;
+}
