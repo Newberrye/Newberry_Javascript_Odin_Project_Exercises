@@ -1,10 +1,9 @@
+/* Centers the calculator on the web page*/
 .basecontainer {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 1px;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    position: absolute;
 }
 
 .calculatorcontainer {
@@ -12,21 +11,33 @@
     flex-direction: column;
     flex: 2 1 0;
     padding: 1px;
-    margin: 20px;
     align-items: center;
-    background-color: gray;
+    background-color: darkgray;
+    width: fit-content;
+    border: 1px black solid;
+}
+
+.calculatorcontainer, input,
+button {
+    border-radius: 8px;
+}
+
+input,
+.row {
+    width: 200px;
+    padding: 1px;
+    margin: 1px;
+    display: flex;
+    flex: auto;
 }
 
 input {
-    display: flex;
     text-align: right;
+    height: 20px;
 }
 
 .row {
-    display: flex;
-    padding: 1px;
-    margin: 1px;
-    width: 185px;
+    flex: auto;
 }
 
 button {
@@ -35,12 +46,8 @@ button {
     justify-content: space-evenly;
     align-items: center;
     width: auto;
-    height: 30px;
+    height: 40px;
     margin: 1px;
-}
-
-#clear {
-    width: 185px;
-    padding: 1px;
-    margin: 1px;
+    font-weight: bold;
+    font-size: medium;
 }

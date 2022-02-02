@@ -14,7 +14,10 @@
 <body>
     <div class="basecontainer">
         <div class="calculatorcontainer">
-            <input id="display" value="0">
+            <!--Row is required for even a single item for styling-->
+            <div class="row">
+                <input id="display" value="0">
+            </div>
 
             <div class="row">
                 <button id="1">1</button>
@@ -49,7 +52,9 @@
                 <button id="=">=</button>
             </div>
 
-            <button id="clear">Clear</button>
+            <div class="row">
+                <button id="clear">Clear</button>
+            </div>
         </div>
     </div>
 </body>
