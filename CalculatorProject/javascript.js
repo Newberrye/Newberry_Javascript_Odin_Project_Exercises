@@ -82,8 +82,8 @@ for (i=0; i < buttons.length; i++) {
                 numberCounter = 0;
                 divideByZero = ``;
 
-    // Calculation; Epsilon and rounding used to fix Javascript number problems
-        // and to limit floating points.
+        // Calculation; Epsilon and rounding used to fix Javascript number problems
+            // and to limit floating points.
             } else if (numberCounter == 2) {
                 number1 = Number(number1);
                 number2 = Number(number2);
@@ -104,6 +104,18 @@ for (i=0; i < buttons.length; i++) {
                 displayValue.value += ` ${this.id} `;
                 divideByZero = this.id;
                 operator = this.id;
+            }
+
+    // Checks if operator buttons are being mashed before numbers are entered
+            if (displayValue.value == ` ${this.id} `) {
+                displayValue.value = ``;
+                number1 = '';
+                number2 = '';
+                operator = '';
+                numberCounter = 0;
+                operationValue = 0;
+                total = 0;
+                divideByZero = ``;
             }
     
     // Clears all variables and display.
