@@ -6,6 +6,10 @@
     position: absolute;
 }
 
+body {
+    background-color: rgb(238, 183, 255);
+}
+
 .calculatorcontainer {
     display: flex;
     flex-direction: column;
