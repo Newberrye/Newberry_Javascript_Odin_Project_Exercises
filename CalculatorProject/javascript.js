@@ -16,6 +16,8 @@ const divide = function(number1,number2) {
 
 // Function to operate on numbers
 const operate = function(number1,operator,number2) {
+    number1 = Number(number1);
+    number2 = Number(number2);
 
     if (operator === "+") {
         return add(number1,number2);
@@ -76,7 +78,8 @@ for (i=0; i < buttons.length; i++) {
         } else if (this.id == "+" || this.id == "-" || this.id == "*" || this.id == "/") {
             numberCounter += 1;
 
-    // Checks for dividing by 0
+
+        // Checks for dividing by 0
             if (number2 === `0` && divideByZero == `/`) {
                 displayValue.value = "ERROR DIVIDED BY 0";
                 numberCounter = 0;
@@ -84,10 +87,7 @@ for (i=0; i < buttons.length; i++) {
 
         // Calculation; Epsilon and rounding used to fix Javascript number problems
             // and to limit floating points.
-            } else if (numberCounter == 2) {
-                number1 = Number(number1);
-                number2 = Number(number2);
-
+            } else if (numberCounter == 2 && number2 !== '') {
                 operationValue = operate(number1,operator,number2);
                 total = operationValue;
                 total = Math.round((total + Number.EPSILON) * 1000) / 1000;
@@ -117,8 +117,20 @@ for (i=0; i < buttons.length; i++) {
                 total = 0;
                 divideByZero = ``;
             }
+
+    // Checks if operator button is being smashed after entering a number
+            if (numberCounter >= 2) {
+                displayValue.value = ``;
+                number1 = '';
+                number2 = '';
+                operator = '';
+                numberCounter = 0;
+                operationValue = 0;
+                total = 0;
+                divideByZero = ``;
+            };
     
-    // Clears all variables and display.
+// Third if Clears all variables and display.
         } else if (this.id == "clear") {
             displayValue.value = ``;
             number1 = '';
@@ -129,7 +141,7 @@ for (i=0; i < buttons.length; i++) {
             total = 0;
             divideByZero = ``;
         
-// Third if deals with calculating after clicking equal button.
+// Fourth  if deals with calculating after clicking equal button.
         } else if (this.id == "=") {
             numberCounter = 2;
             
@@ -154,8 +166,6 @@ for (i=0; i < buttons.length; i++) {
     // Final operation calculator and resets most variables.
     // Total and Display are reset in first if of event listener function.
             } else if (numberCounter == 2) {
-                number1 = Number(number1);
-                number2 = Number(number2);
 
                 operationValue = operate(number1,operator,number2);
                 total = operationValue;
