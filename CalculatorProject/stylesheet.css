@@ -40,6 +40,10 @@ input {
     height: 20px;
 }
 
+input::placeholder {
+    color: black;
+}
+
 .row {
     flex: auto;
 }
@@ -54,4 +58,17 @@ button {
     margin: 1px;
     font-weight: bold;
     font-size: medium;
+    background-color: whitesmoke;
+}
+
+button:hover {
+    filter: brightness(120%);
+    background-color: lightgoldenrodyellow;
+}
+
+button:active {
+    filter: brightness(50%);
+    background: 
+    radial-gradient(at 50% 0, gray, transparent 70%),
+    linear-gradient(0deg, gray, transparent 50%) bottom;
 }
